@@ -8,13 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		A7122F2F1D87278F0013341E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7122F2E1D87278F0013341E /* AppDelegate.swift */; };
-		A7122F311D87278F0013341E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7122F301D87278F0013341E /* ViewController.swift */; };
 		A7122F341D87278F0013341E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7122F321D87278F0013341E /* Main.storyboard */; };
 		A7122F371D87278F0013341E /* CinemaClub.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A7122F351D87278F0013341E /* CinemaClub.xcdatamodeld */; };
 		A7122F391D87278F0013341E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7122F381D87278F0013341E /* Assets.xcassets */; };
 		A7122F3C1D87278F0013341E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7122F3A1D87278F0013341E /* LaunchScreen.storyboard */; };
 		A7122F471D87278F0013341E /* CinemaClubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7122F461D87278F0013341E /* CinemaClubTests.swift */; };
 		A7122F521D87278F0013341E /* CinemaClubUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7122F511D87278F0013341E /* CinemaClubUITests.swift */; };
+		A7122F611D8739040013341E /* MovieCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7122F601D8739040013341E /* MovieCollectionViewController.swift */; };
+		A7122F631D8739800013341E /* MovieDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7122F621D8739800013341E /* MovieDataStore.swift */; };
+		A7122F651D8739A70013341E /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7122F641D8739A70013341E /* Movie.swift */; };
+		A7122F671D873A3A0013341E /* OMDBAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7122F661D873A3A0013341E /* OMDBAPIClient.swift */; };
+		A7DDD2731D8A2889001FFB98 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDD2721D8A2889001FFB98 /* MovieCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +41,6 @@
 /* Begin PBXFileReference section */
 		A7122F2B1D87278F0013341E /* CinemaClub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CinemaClub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7122F2E1D87278F0013341E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A7122F301D87278F0013341E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A7122F331D87278F0013341E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A7122F361D87278F0013341E /* CinemaClub.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CinemaClub.xcdatamodel; sourceTree = "<group>"; };
 		A7122F381D87278F0013341E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +52,11 @@
 		A7122F4D1D87278F0013341E /* CinemaClubUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CinemaClubUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7122F511D87278F0013341E /* CinemaClubUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaClubUITests.swift; sourceTree = "<group>"; };
 		A7122F531D87278F0013341E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7122F601D8739040013341E /* MovieCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewController.swift; sourceTree = "<group>"; };
+		A7122F621D8739800013341E /* MovieDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDataStore.swift; sourceTree = "<group>"; };
+		A7122F641D8739A70013341E /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		A7122F661D873A3A0013341E /* OMDBAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMDBAPIClient.swift; sourceTree = "<group>"; };
+		A7DDD2721D8A2889001FFB98 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,10 +108,15 @@
 			isa = PBXGroup;
 			children = (
 				A7122F2E1D87278F0013341E /* AppDelegate.swift */,
-				A7122F301D87278F0013341E /* ViewController.swift */,
-				A7122F321D87278F0013341E /* Main.storyboard */,
+				A7122F621D8739800013341E /* MovieDataStore.swift */,
+				A7122F641D8739A70013341E /* Movie.swift */,
+				A7122F601D8739040013341E /* MovieCollectionViewController.swift */,
+				A7DDD2721D8A2889001FFB98 /* MovieCollectionViewCell.swift */,
+				A7122F661D873A3A0013341E /* OMDBAPIClient.swift */,
 				A7122F381D87278F0013341E /* Assets.xcassets */,
+				A7122F321D87278F0013341E /* Main.storyboard */,
 				A7122F3A1D87278F0013341E /* LaunchScreen.storyboard */,
+				A7122F5F1D87383E0013341E /* Model */,
 				A7122F3D1D87278F0013341E /* Info.plist */,
 				A7122F351D87278F0013341E /* CinemaClub.xcdatamodeld */,
 			);
@@ -126,6 +139,13 @@
 				A7122F531D87278F0013341E /* Info.plist */,
 			);
 			path = CinemaClubUITests;
+			sourceTree = "<group>";
+		};
+		A7122F5F1D87383E0013341E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,9 +279,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7122F311D87278F0013341E /* ViewController.swift in Sources */,
 				A7122F371D87278F0013341E /* CinemaClub.xcdatamodeld in Sources */,
 				A7122F2F1D87278F0013341E /* AppDelegate.swift in Sources */,
+				A7122F631D8739800013341E /* MovieDataStore.swift in Sources */,
+				A7122F611D8739040013341E /* MovieCollectionViewController.swift in Sources */,
+				A7DDD2731D8A2889001FFB98 /* MovieCollectionViewCell.swift in Sources */,
+				A7122F651D8739A70013341E /* Movie.swift in Sources */,
+				A7122F671D873A3A0013341E /* OMDBAPIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +512,7 @@
 				A7122F581D87278F0013341E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A7122F591D87278F0013341E /* Build configuration list for PBXNativeTarget "CinemaClubTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +521,7 @@
 				A7122F5B1D87278F0013341E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A7122F5C1D87278F0013341E /* Build configuration list for PBXNativeTarget "CinemaClubUITests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +530,7 @@
 				A7122F5E1D87278F0013341E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
