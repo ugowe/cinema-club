@@ -40,11 +40,11 @@ class Movie {
         
             else {fatalError("Error creating instance of Movie")}
         
-        title = jsonTitle
-        year = jsonYear
-        imdbID = jsonImdbID
-        type = jsonType
-        poster = jsonPoster
+        self.title = jsonTitle
+        self.year = jsonYear
+        self.imdbID = jsonImdbID
+        self.type = jsonType
+        self.poster = jsonPoster
     }
     
     func updateMovieObjectWithDetails(details:[String: String]){
@@ -76,14 +76,6 @@ class Movie {
             
         }
     }
-    
 
-    
-    
-    
-    
-    
-    
-    
     
 }

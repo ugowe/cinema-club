@@ -20,7 +20,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var movieYear: UILabel!
     var movie: Movie?
-    weak var delegate: MovieCollectionViewCellDelegate?
+    var delegate: MovieCollectionViewCellDelegate?
     
     func setMovie(movie: Movie) {
         self.movie = movie
