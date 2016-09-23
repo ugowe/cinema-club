@@ -19,22 +19,25 @@ class MovieDataStore {
     //This prevents others from using the default '()' initializer for this class.
     private init() {}
     
-    func searchForMoviesWith(query: String, completionHandler: (Bool) -> ()) {
+    func searchForMoviesWith(_ query: String, completionHandler: @escaping (Bool) -> ()) {
         
         OMDBAPIClient.searchOMDBAPIWith(query) { results in
             
             self.movieResults.removeAll()
-            self.totalNumberOfSearchResults = (results["totalResults"]?.integerValue)
+            self.totalNumberOfSearchResults = (results["totalResults"]?.intValue)
             
             guard let resultsArray = results["Search"] as? NSArray else {fatalError("Error returning resultsArray")}
             
             for dictionary in resultsArray {
                 
-                if let movie = Movie(movieDictionary: dictionary as! [String : AnyObject]) {
-                   self.movieResults.append(movie)
-                }
+//                if let movie = Movie(dictionary: dictionary as! [String : Any]) {
+//                   self.movieResults.append(movie)
+//                }
+                let movie = Movie(dictionary: dictionary as! [String : Any])
+                self.movieResults.append(movie)
                 
             }
+            
             if self.movieResults.count > 0{
                 completionHandler(true)
             }

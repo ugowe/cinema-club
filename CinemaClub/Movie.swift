@@ -11,11 +11,11 @@ import UIKit
 
 class Movie {
     
-    var title: String
-    var year: String
-    var imdbID: String
-    var type: String
-    var poster: String
+    var title: String?
+    var year: String?
+    var imdbID: String?
+    var type: String?
+    var posterURL: String?
     
     var actors: String?
     var director: String?
@@ -30,24 +30,40 @@ class Movie {
     var posterImage: UIImage?
     
     
-    init?(movieDictionary: [String: AnyObject]) {
-        guard let
-            jsonTitle = movieDictionary["Title"] as? String,
-            jsonYear = movieDictionary["Year"] as? String,
-            jsonImdbID = movieDictionary["imdbID"] as? String,
-            jsonType = movieDictionary["Type"] as? String,
-            jsonPoster = movieDictionary["Poster"] as? String
+//    init?(movieDictionary: [String: AnyObject]) {
+//        guard let
+//            jsonTitle = movieDictionary["Title"] as? String,
+//            let jsonYear = movieDictionary["Year"] as? String,
+//            let jsonImdbID = movieDictionary["imdbID"] as? String,
+//            let jsonType = movieDictionary["Type"] as? String,
+//            let jsonPoster = movieDictionary["Poster"] as? String
+//        
+//            else {fatalError("Error creating instance of Movie")}
+//        
+//        self.title = jsonTitle
+//        self.year = jsonYear
+//        self.imdbID = jsonImdbID
+//        self.type = jsonType
+//        self.posterURL= jsonPoster
+//    }
+    
+    init(dictionary: [String: Any]) {
         
-            else {fatalError("Error creating instance of Movie")}
+        self.updateMovieObject(fromDictionary: dictionary)
         
-        self.title = jsonTitle
-        self.year = jsonYear
-        self.imdbID = jsonImdbID
-        self.type = jsonType
-        self.poster = jsonPoster
     }
     
-    func updateMovieObjectWithDetails(details:[String: String]){
+    
+    func updateMovieObject(fromDictionary dictionary: [String: Any]) {
+        self.posterURL = dictionary["Poster"] as? String
+        self.title = dictionary["Title"] as? String
+        self.type = dictionary["Type"] as? String
+        self.year = dictionary["Year"] as? String
+        self.imdbID = dictionary["imdbID"] as? String
+        self.placeholderImage = UIImage(named: "defaultMovieReel")!
+    }
+    
+    func updateMovieObjectWithDetails(_ details:[String: String]){
         self.actors = details["Actors"]
         self.director = details["Director"]
         self.genre = details["Genre"]
@@ -58,14 +74,14 @@ class Movie {
         self.imdbRating = details["imdbRating"]
     }
     
-    func getMovieImageWithCompletion(completion: (Bool) -> ()){
+    func getMovieImageWithCompletion(_ completion: @escaping (_ success: Bool) -> Void){
         
-        NSOperationQueue.mainQueue().addOperationWithBlock { 
+        OperationQueue.main.addOperation { 
             
             guard let
-                url = NSURL(string: self.poster),
-                data = NSData(contentsOfURL: url)
-                else {fatalError("Error retrieving poster image")}
+                url = URL(string: self.posterURL!),
+                let data = try? Data(contentsOf: url)
+                else {fatalError("Error retrieving posterURLimage")}
             self.posterImage = UIImage(data: data)
             
             if (self.posterImage == nil){

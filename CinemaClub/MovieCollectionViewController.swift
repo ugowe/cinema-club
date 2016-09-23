@@ -6,16 +6,22 @@
 //  Copyright © 2016 Ugowe. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
-class MovieCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, MovieCollectionViewCellDelegate {
+class MovieCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, MovieCollectionViewCellDelegate {
     
+    @IBOutlet var movieCollectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    
     let store = MovieDataStore.sharedStore
+    var movie: Movie?
+    
+    
     var searchTerms: [String]?
     var searchString: String?
+    
+    
     var hideFooterView: Bool?
     var lastContentOffset: Float?
     
@@ -23,75 +29,98 @@ class MovieCollectionViewController: UICollectionViewController, UICollectionVie
     let imageRatio: CGFloat = 0.66
     let layoutSpacing: CGFloat = 35.0
     let footerViewHeight: CGFloat = 65
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // TO DO: add search bar to nav bar
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
-//        self.store.searchForMoviesWith("love") { success in
-//            
-//            if success {
-//                self.collectionView?.reloadData()
-//            }
-//        }
+        //        self.store.searchForMoviesWith("love") { success in
+        //
+        //            if success {
+        //                self.collectionView?.reloadData()
+        //            }
+        //        }
+        
+        movieCollectionView.delegate = self
+        movieCollectionView.dataSource = self
         
         setUpIntialView()
         
-//        // Register cell classes
-//        http://stackoverflow.com/questions/32166364/could-not-cast-value-of-type-uicollectionviewcell
-//        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
+        //        // Register cell classes
+        //        http://stackoverflow.com/questions/32166364/could-not-cast-value-of-type-uicollectionviewcell
+        //        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
         // Do any additional setup after loading the view.
     }
     
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        // TO DO: Use count from datastore array
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.store.movieResults.count
     }
     
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! MovieCollectionViewCell
         
-//        let movie = self.store.movieResults[indexPath.row]
-//        
-//        cell.movieImageView.image = movie.posterImage
-//        cell.movieTitle.text = movie.title
-//        cell.movieYear.text = movie.year
+        cell.backgroundColor = UIColor.lightGray
+        
+        let movie = self.store.movieResults[indexPath.row]
+        
+        
+        cell.movieTitle.text = movie.title
+        cell.movieYear.text = movie.year
+        
+        if movie.posterURL == "N/A" {
+            cell.movieImageView.image = UIImage.init(named: "moviePlaceholder")
+        }
+        
+        let imageUrlString = movie.posterURL
+        
+        let imageUrl = URL(string: imageUrlString!)
+        
+        if let unwrappedImageUrl = imageUrl {
+            let imageData = try? Data(contentsOf: unwrappedImageUrl)
+            
+            if let unwrappedImageData = imageData {
+                cell.movieImageView.image = UIImage(data: unwrappedImageData)
+            }
+        }
         
         return cell
     }
     
-    override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        
-        let movieCell: MovieCollectionViewCell = cell as! MovieCollectionViewCell
-        movieCell.delegate = self
-        let movie = self.store.movieResults[indexPath.row]
-        
-        movieCell.placeHolderImageView.image = UIImage(named: "moviePlaceholder")!
-        movieCell.movieImageView.image = movie.posterImage
-        movieCell.movieTitle.text = movie.title
-        movieCell.movieYear.text = movie.year
-        
-        if let dataArray = self.store.movieResults[indexPath.item] as? Movie {
-            movieCell.movie = dataArray
-        }
+//    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        
+//        let movieCell: MovieCollectionViewCell = cell as! MovieCollectionViewCell
+//        movieCell.delegate = self
+//        //        let movie = self.store.movieResults[indexPath.row]
+//        //
+//        movieCell.placeHolderImageView.image = UIImage(named: "moviePlaceholder")!
+//        //        movieCell.movieImageView.image = movie.posterImage
+//        //        movieCell.movieTitle.text = movie.title
+//        //        movieCell.movieYear.text = movie.year
+//        //
+//        //        if let dataArray = self.store.movieResults[indexPath.item] as? Movie {
+//        //            movieCell.movie = dataArray
+//        //        }
 //        let dataArrayContainsMovies = (self.store.movieResults[indexPath.item] is Movie)
 //        if dataArrayContainsMovies {
 //            movieCell.movie = self.store.movieResults[indexPath.item]
 //        }
-        
-        
-    }
+//        
+//        
+//    }
     
-    func canUpdateImageViewOfCell(cell: MovieCollectionViewCell) -> Bool {
+    func canUpdateImageViewOfCell(_ cell: MovieCollectionViewCell) -> Bool {
         
-        if ((self.collectionView?.visibleCells().contains(cell)) != nil) {
+        if ((self.movieCollectionView?.visibleCells.contains(cell)) != nil) {
             return true
         } else {
             return false
@@ -100,35 +129,35 @@ class MovieCollectionViewController: UICollectionViewController, UICollectionVie
     
     func setUpIntialView() {
         
-        self.searchTerms = ["man"]
+//        self.searchTerms = ["man"]
         
         // Set the footer view to be unhidden
         self.hideFooterView = true
         
         // Collection view Layout
-        self.collectionView?.contentInset = UIEdgeInsets(top: layoutSpacing, left: layoutSpacing, bottom: layoutSpacing, right: layoutSpacing)
+        self.movieCollectionView?.contentInset = UIEdgeInsets(top: layoutSpacing, left: layoutSpacing, bottom: layoutSpacing, right: layoutSpacing)
         self.flowLayout?.minimumLineSpacing = layoutSpacing
         self.flowLayout?.minimumInteritemSpacing = layoutSpacing
-        let screenWidth = UIScreen.mainScreen().bounds.size.width
+        let screenWidth = UIScreen.main.bounds.size.width
         let itemWidth = (screenWidth / 2) - ((self.flowLayout?.minimumInteritemSpacing)! / 2) - layoutSpacing
         let itemHeight = itemWidth / imageRatio
-        self.flowLayout?.itemSize = CGSizeMake(itemWidth, itemHeight)
-        self.flowLayout?.footerReferenceSize = CGSizeMake(screenWidth, footerViewHeight)
+        self.flowLayout?.itemSize = CGSize(width: itemWidth, height: itemHeight)
+        self.flowLayout?.footerReferenceSize = CGSize(width: screenWidth, height: footerViewHeight)
         
         
         
         
-        self.store.searchForMoviesWith("love") { success in
+        self.store.searchForMoviesWith("man") { success in
             
             if success {
-                NSOperationQueue.mainQueue().addOperationWithBlock({ 
-                    self.collectionView?.reloadData()
+                OperationQueue.main.addOperation({ 
+                    self.movieCollectionView?.reloadData()
                 })
             }
         }
         
         
     }
-
-
+    
+    
 }
