@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MovieCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, MovieCollectionViewCellDelegate {
+class MovieCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, UISearchBarDelegate, MovieCollectionViewCellDelegate {
     
     @IBOutlet var movieCollectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
@@ -17,7 +17,7 @@ class MovieCollectionViewController: UIViewController, UICollectionViewDelegate,
     let store = MovieDataStore.sharedStore
     var movie: Movie?
     
-    
+    var searchBar: UISearchBar!
     var searchTerms: [String]?
     var searchString: String?
     
@@ -49,12 +49,25 @@ class MovieCollectionViewController: UIViewController, UICollectionViewDelegate,
         movieCollectionView.dataSource = self
         
         setUpIntialView()
+        createSearchBar()
+        
         
         //        // Register cell classes
         //        http://stackoverflow.com/questions/32166364/could-not-cast-value-of-type-uicollectionviewcell
         //        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         // Do any additional setup after loading the view.
+    }
+    
+    func createSearchBar() {
+        
+        searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 375, height: 200))
+        searchBar.delegate = self
+        searchBar.showsCancelButton = false
+        searchBar.placeholder = "Search Movies By Title"
+        self.navigationItem.titleView = searchBar
+
+        
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
