@@ -66,8 +66,29 @@ class MovieCollectionViewController: UIViewController, UICollectionViewDelegate,
         searchBar.showsCancelButton = false
         searchBar.placeholder = "Search Movies By Title"
         self.navigationItem.titleView = searchBar
-
         
+        
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        let searchResult = searchBar.text!
+        
+        if !searchResult.isEmpty {
+            let queue = OperationQueue()
+            queue.qualityOfService = .background
+            queue.addOperation({ 
+                self.store.searchForMoviesWith(searchResult, completionHandler: { (true) in
+                    
+                    OperationQueue.main.addOperation({ 
+                        self.movieCollectionView.reloadData()
+                    })
+                })
+            })
+            
+        }
+        
+        self.searchBar.resignFirstResponder()
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -109,27 +130,27 @@ class MovieCollectionViewController: UIViewController, UICollectionViewDelegate,
         return cell
     }
     
-//    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        
-//        let movieCell: MovieCollectionViewCell = cell as! MovieCollectionViewCell
-//        movieCell.delegate = self
-//        //        let movie = self.store.movieResults[indexPath.row]
-//        //
-//        movieCell.placeHolderImageView.image = UIImage(named: "moviePlaceholder")!
-//        //        movieCell.movieImageView.image = movie.posterImage
-//        //        movieCell.movieTitle.text = movie.title
-//        //        movieCell.movieYear.text = movie.year
-//        //
-//        //        if let dataArray = self.store.movieResults[indexPath.item] as? Movie {
-//        //            movieCell.movie = dataArray
-//        //        }
-//        let dataArrayContainsMovies = (self.store.movieResults[indexPath.item] is Movie)
-//        if dataArrayContainsMovies {
-//            movieCell.movie = self.store.movieResults[indexPath.item]
-//        }
-//        
-//        
-//    }
+    //    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    //
+    //        let movieCell: MovieCollectionViewCell = cell as! MovieCollectionViewCell
+    //        movieCell.delegate = self
+    //        //        let movie = self.store.movieResults[indexPath.row]
+    //        //
+    //        movieCell.placeHolderImageView.image = UIImage(named: "moviePlaceholder")!
+    //        //        movieCell.movieImageView.image = movie.posterImage
+    //        //        movieCell.movieTitle.text = movie.title
+    //        //        movieCell.movieYear.text = movie.year
+    //        //
+    //        //        if let dataArray = self.store.movieResults[indexPath.item] as? Movie {
+    //        //            movieCell.movie = dataArray
+    //        //        }
+    //        let dataArrayContainsMovies = (self.store.movieResults[indexPath.item] is Movie)
+    //        if dataArrayContainsMovies {
+    //            movieCell.movie = self.store.movieResults[indexPath.item]
+    //        }
+    //
+    //
+    //    }
     
     func canUpdateImageViewOfCell(_ cell: MovieCollectionViewCell) -> Bool {
         
@@ -142,7 +163,7 @@ class MovieCollectionViewController: UIViewController, UICollectionViewDelegate,
     
     func setUpIntialView() {
         
-//        self.searchTerms = ["man"]
+        //        self.searchTerms = ["man"]
         
         // Set the footer view to be unhidden
         self.hideFooterView = true
@@ -163,7 +184,7 @@ class MovieCollectionViewController: UIViewController, UICollectionViewDelegate,
         self.store.searchForMoviesWith("man") { success in
             
             if success {
-                OperationQueue.main.addOperation({ 
+                OperationQueue.main.addOperation({
                     self.movieCollectionView?.reloadData()
                 })
             }
