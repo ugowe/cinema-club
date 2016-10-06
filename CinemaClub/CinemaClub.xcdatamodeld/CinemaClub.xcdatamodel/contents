@@ -17,13 +17,13 @@
         <attribute name="movieRated" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="movieRating" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="movieRuntime" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="movieTItle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="movieTitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="movieWriter" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="movieYear" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="favorite" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Favorited" inverseName="movies" inverseEntity="Favorited" syncable="YES"/>
     </entity>
     <elements>
         <element name="Favorited" positionX="142" positionY="12" width="128" height="58"/>
-        <element name="Movie" positionX="-54" positionY="-9" width="128" height="298"/>
+        <element name="Movie" positionX="-54" positionY="-9" width="128" height="300"/>
     </elements>
 </model>

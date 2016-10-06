@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+@available(iOS 10.0, *)
 class MovieCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, UISearchBarDelegate, MovieCollectionViewCellDelegate {
     
     @IBOutlet var movieCollectionView: UICollectionView!
@@ -101,29 +102,33 @@ class MovieCollectionViewController: UIViewController, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! MovieCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! MovieCollectionViewCell
         
         cell.backgroundColor = UIColor.lightGray
         
         let movie = self.store.movieResults[indexPath.row]
         
         
-        cell.movieTitle.text = movie.title
-        cell.movieYear.text = movie.year
+        cell.movieTitle.text = movie.movieTitle
+        cell.movieYear.text = movie.movieYear
         
-        if movie.posterURL == "N/A" {
+        if movie.moviePosterURL == "N/A" {
             cell.movieImageView.image = UIImage.init(named: "moviePlaceholder")
         }
         
-        let imageUrlString = movie.posterURL
+        let imageUrlString = movie.moviePosterURL!
         
-        let imageUrl = URL(string: imageUrlString!)
+        let imageUrl = URL(string: imageUrlString)
         
         if let unwrappedImageUrl = imageUrl {
+            
             let imageData = try? Data(contentsOf: unwrappedImageUrl)
             
             if let unwrappedImageData = imageData {
-                cell.movieImageView.image = UIImage(data: unwrappedImageData)
+                
+                DispatchQueue.main.async {
+                    cell.movieImageView.image = UIImage(data: unwrappedImageData)
+                }
             }
         }
         

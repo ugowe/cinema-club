@@ -34,6 +34,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <connections>
+                        <segue destination="46R-6E-sVF" kind="relationship" relationship="rootViewController" id="ccS-wT-BC1"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zpv-RW-Exa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -43,7 +46,7 @@
         <scene sceneID="OKC-yt-e4D">
             <objects>
                 <collectionViewController id="IPi-Kk-HqS" userLabel="Movie Collection View Controller" customClass="MovieCollectionViewController" customModule="CinemaClub" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="I6V-40-4nf">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="I6V-40-4nf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MEB-kr-KSF">
@@ -53,7 +56,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="94t-4b-zy0" customClass="MovieCollectionViewCell" customModule="CinemaClub" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="movieCell" id="94t-4b-zy0" customClass="MovieCollectionViewCell" customModule="CinemaClub" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -121,8 +124,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="8Rn-Bb-JIc">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteCell" id="8Rn-Bb-JIc">
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Rn-Bb-JIc" id="Q9b-wz-ELq">
                                     <frame key="frameInset" width="375" height="43"/>
@@ -135,6 +138,7 @@
                             <outlet property="delegate" destination="46R-6E-sVF" id="vK9-Jk-1z9"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="Yk5-ym-PEN"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BHN-C7-IS3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
