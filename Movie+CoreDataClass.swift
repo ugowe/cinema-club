@@ -46,7 +46,7 @@ public class Movie: NSManagedObject {
     
     
     
-    func updateMovieObjectWithDetails(_ details:[String: AnyObject]){
+    func updateMovieObjectWithDetails(_ details:[String: AnyObject], completion:(Bool) -> ()){
         self.movieActors = details["Actors"] as? String
         self.movieDirector = details["Director"] as? String
         self.movieGenre = details["Genre"] as? String
@@ -59,6 +59,8 @@ public class Movie: NSManagedObject {
         self.movieCountry = details["Country"] as? String
         self.movieLanguage = details["Language"] as? String
 //        self.moviePlotLong = details[""]
+        
+         completion(true)
     }
     
 //    func getMovieImageWithCompletion(_ completion: @escaping (_ success: Bool) -> Void){

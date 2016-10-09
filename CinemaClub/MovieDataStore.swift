@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 
 @available(iOS 10.0, *)
@@ -59,10 +60,21 @@ class MovieDataStore {
         if self.movieResults.count > 0{
             completionHandler(true)
         }
-        
-        
-        
     }
+    
+    func getMovieDetailsWithID(movie: Movie, completion:@escaping ()->()){
+        OMDBAPIClient().getMovieDataSearchWithID(movieID: movie.movieID!){ movieData in
+            movie.updateMovieObjectWithDetails(movieData, completion: { success in
+                if success {
+                    completion()
+                   }
+                
+            })
+        }
+    }
+
+    
+
     
     // MARK: - Core Data stack
     
@@ -111,17 +123,17 @@ class MovieDataStore {
         return managedObjectContext
     }()
     
-    lazy var persistentContainer: NSPersistentContainer = {
-        
-        let container = NSPersistentContainer(name: "CinemaClub")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError?  {
-                
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
+//    lazy var persistentContainer: NSPersistentContainer = {
+//        
+//        let container = NSPersistentContainer(name: "CinemaClub")
+//        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+//            if let error = error as NSError?  {
+//                
+//                fatalError("Unresolved error \(error), \(error.userInfo)")
+//            }
+//        })
+//        return container
+//    }()
     
     // MARK: - Core Data Saving support
     

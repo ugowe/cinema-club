@@ -6,6 +6,7 @@
 //  Copyright © 2016 Ugowe. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import CoreData
 
@@ -14,12 +15,22 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+
+//    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//    var favoritedMovies: [Favorited] = []
+//    
+//    func getFavorites() {
+//        let favoritedMovieRequest: NSFetchRequest<Favorited> = Favorited.fetchRequest()
+//
+//        do {
+//            self.favoritedMovies = try context.fetch(favoritedMovieRequest)
+//        } catch {
+//            print(error)
+//            favoritedMovies = []
+//        }
+//    }
     
 
-//    func getContext () -> NSManagedObjectContext {
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//        return appDelegate.persistentContainer.viewContext
-//    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -97,17 +108,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        return managedObjectContext
 //    }()
 //    
-//    lazy var persistentContainer: NSPersistentContainer = {
-//        
-//        let container = NSPersistentContainer(name: "CinemaClub")
-//        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-//            if let error = error as NSError?  {
-//                
-//                fatalError("Unresolved error \(error), \(error.userInfo)")
-//            }
-//        })
-//        return container
-//    }()
+    lazy var persistentContainer: NSPersistentContainer = {
+        
+        let container = NSPersistentContainer(name: "CinemaClub")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError?  {
+                
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
 //
 //    // MARK: - Core Data Saving support
 //

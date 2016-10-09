@@ -135,27 +135,14 @@ class MovieCollectionViewController: UIViewController, UICollectionViewDelegate,
         return cell
     }
     
-    //    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-    //
-    //        let movieCell: MovieCollectionViewCell = cell as! MovieCollectionViewCell
-    //        movieCell.delegate = self
-    //        //        let movie = self.store.movieResults[indexPath.row]
-    //        //
-    //        movieCell.placeHolderImageView.image = UIImage(named: "moviePlaceholder")!
-    //        //        movieCell.movieImageView.image = movie.posterImage
-    //        //        movieCell.movieTitle.text = movie.title
-    //        //        movieCell.movieYear.text = movie.year
-    //        //
-    //        //        if let dataArray = self.store.movieResults[indexPath.item] as? Movie {
-    //        //            movieCell.movie = dataArray
-    //        //        }
-    //        let dataArrayContainsMovies = (self.store.movieResults[indexPath.item] is Movie)
-    //        if dataArrayContainsMovies {
-    //            movieCell.movie = self.store.movieResults[indexPath.item]
-    //        }
-    //
-    //
-    //    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        self.performSegue(withIdentifier: "movieDetailSegue", sender: indexPath)
+        
+        let cell = movieCollectionView.cellForItem(at: indexPath)
+        cell?.backgroundColor = UIColor.cyan
+        
+    }
     
     func canUpdateImageViewOfCell(_ cell: MovieCollectionViewCell) -> Bool {
         
@@ -163,6 +150,17 @@ class MovieCollectionViewController: UIViewController, UICollectionViewDelegate,
             return true
         } else {
             return false
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       
+        if segue.identifier == "movieDetailSegue" {
+            if let selectedIndexPath = sender as? IndexPath {
+                let destinationVC = segue.destination as! MovieDetailViewController
+                let movieID = self.store.movieResults[selectedIndexPath.row]
+                destinationVC.movie = movieID
+            }
         }
     }
     
