@@ -11,11 +11,12 @@ import CoreData
 import UIKit
 
 
-@available(iOS 10.0, *)
+//@available(iOS 10.0, *)
 class MovieDataStore {
     
     static let sharedStore = MovieDataStore()
     var movieResults: [Movie] = []
+    var favoriteMovies: [Favorited] = []
     var totalNumberOfSearchResults: Int?
     
     // This private init is what allows us to ensure that people aren't creating multiple instances of the singleton
@@ -70,6 +71,17 @@ class MovieDataStore {
                    }
                 
             })
+        }
+    }
+    
+    func fetchData() {
+        let favoriteMovieRequest = NSFetchRequest<Favorited>(entityName: "Favorited")
+        
+        do {
+            self.favoriteMovies = try managedObjectContext.fetch(favoriteMovieRequest)
+        } catch {
+            print(error)
+            favoriteMovies = []
         }
     }
 

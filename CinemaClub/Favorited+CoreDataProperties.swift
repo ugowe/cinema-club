@@ -2,7 +2,7 @@
 //  Favorited+CoreDataProperties.swift
 //  CinemaClub
 //
-//  Created by Ugowe on 10/5/16.
+//  Created by Ugowe on 10/22/16.
 //  Copyright © 2016 Ugowe. All rights reserved.
 //
 

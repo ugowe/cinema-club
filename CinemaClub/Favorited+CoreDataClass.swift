@@ -2,7 +2,7 @@
 //  Favorited+CoreDataClass.swift
 //  CinemaClub
 //
-//  Created by Ugowe on 9/30/16.
+//  Created by Ugowe on 10/22/16.
 //  Copyright © 2016 Ugowe. All rights reserved.
 //
 
@@ -11,5 +11,5 @@ import CoreData
 
 
 public class Favorited: NSManagedObject {
-    
+
 }

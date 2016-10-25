@@ -108,12 +108,15 @@ class MovieCollectionViewController: UIViewController, UICollectionViewDelegate,
         
         let movie = self.store.movieResults[indexPath.row]
         
-        
-        cell.movieTitle.text = movie.movieTitle
-        cell.movieYear.text = movie.movieYear
+        cell.movieTitle.isHidden = true
+        cell.movieYear.isHidden = true
         
         if movie.moviePosterURL == "N/A" {
             cell.movieImageView.image = UIImage.init(named: "moviePlaceholder")
+            cell.movieTitle.isHidden = false
+            cell.movieYear.isHidden = false
+            cell.movieTitle.text = movie.movieTitle
+            cell.movieYear.text = movie.movieYear
         }
         
         let imageUrlString = movie.moviePosterURL!
@@ -137,7 +140,7 @@ class MovieCollectionViewController: UIViewController, UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        self.performSegue(withIdentifier: "movieDetailSegue", sender: indexPath)
+        self.performSegue(withIdentifier: "movieToDetailSegue", sender: indexPath)
         
         let cell = movieCollectionView.cellForItem(at: indexPath)
         cell?.backgroundColor = UIColor.cyan
@@ -155,7 +158,7 @@ class MovieCollectionViewController: UIViewController, UICollectionViewDelegate,
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        
-        if segue.identifier == "movieDetailSegue" {
+        if segue.identifier == "movieToDetailSegue" {
             if let selectedIndexPath = sender as? IndexPath {
                 let destinationVC = segue.destination as! MovieDetailViewController
                 let movieID = self.store.movieResults[selectedIndexPath.row]
@@ -195,6 +198,8 @@ class MovieCollectionViewController: UIViewController, UICollectionViewDelegate,
         
         
     }
+    
+
     
     
 }
