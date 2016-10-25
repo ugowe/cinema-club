@@ -1,0 +1,6 @@
+framework module Pods_CinemaClubUITests {
+  umbrella header "Pods-CinemaClubUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
