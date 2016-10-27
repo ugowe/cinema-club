@@ -15,6 +15,9 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    
+    
 
 //    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 //    var favoritedMovies: [Favorited] = []
@@ -59,6 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
 //        self.saveContext()
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.reachabilityChanged, object: nil)
     }
 
 //    // MARK: - Core Data stack

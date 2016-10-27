@@ -30,6 +30,11 @@ class MovieDetailViewController: UIViewController {
         
         super.viewDidLoad()
         
+        reachabilityStatusChanged()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(MovieDetailViewController.reachabilityStatusChanged), name: NSNotification.Name(rawValue: "reachStatusChanged"), object: nil)
+        
+        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "⭐️", style: .done, target: self, action: #selector(MovieDetailViewController.saveMovie))
         guard let unwrappedMovie = movie else{return}
         self.store.getMovieDetailsWithID(movie: unwrappedMovie) { success in
@@ -99,6 +104,35 @@ class MovieDetailViewController: UIViewController {
         
         store.saveContext()        
     }
+    
+    func reachabilityStatusChanged()
+    {
+        if reachabilityStatus == kNOTREACHABLE
+        {
+            /// CHANGE
+//            self.activityIndicator.isHidden = true
+//            self.activityIndicator.stopAnimating()
+            let noNetworkAlertController = UIAlertController(title: "No Network Connection detected", message: "Cannot conduct search", preferredStyle: .alert)
+            
+            self.present(noNetworkAlertController, animated: true, completion: nil)
+            
+            DispatchQueue.main.async { () -> Void in
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(1.2 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: { () -> Void in
+                    noNetworkAlertController.dismiss(animated: true, completion: nil)
+                })
+            }
+            
+        }
+        else if reachabilityStatus == kREACHABILITYWITHWIFI
+        {
+            
+        }
+        else if reachabilityStatus == kREACHABLEWITHWWAN
+        {
+            
+        }
+    }
+
 
 }
 

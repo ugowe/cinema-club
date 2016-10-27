@@ -23,7 +23,7 @@ class OMDBAPIClient {
         let movieTask = session.dataTask(with: movieURL, completionHandler: { (data, response, error) in
             do {
                 guard let data = data else {fatalError("Unable to retrieve data")}
-                let movieDictionary = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
+                let movieDictionary = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
                 completionHandler(movieDictionary as! [String : AnyObject])
             } catch {
                 print(error)

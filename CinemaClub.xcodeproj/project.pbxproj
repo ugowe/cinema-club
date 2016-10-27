@@ -20,6 +20,8 @@
 		A7122F611D8739040013341E /* MovieCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7122F601D8739040013341E /* MovieCollectionViewController.swift */; };
 		A7122F631D8739800013341E /* MovieDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7122F621D8739800013341E /* MovieDataStore.swift */; };
 		A7122F671D873A3A0013341E /* OMDBAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7122F661D873A3A0013341E /* OMDBAPIClient.swift */; };
+		A71C4D991DBF169900A41B94 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A71C4D981DBF169900A41B94 /* Reachability.m */; };
+		A71C4D9C1DBF1B8D00A41B94 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71C4D9B1DBF1B8D00A41B94 /* Helper.swift */; };
 		A728602A1DBBF41F00EE5086 /* Movie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72860261DBBF41F00EE5086 /* Movie+CoreDataClass.swift */; };
 		A728602B1DBBF41F00EE5086 /* Movie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72860271DBBF41F00EE5086 /* Movie+CoreDataProperties.swift */; };
 		A728602C1DBBF41F00EE5086 /* Favorited+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72860281DBBF41F00EE5086 /* Favorited+CoreDataClass.swift */; };
@@ -28,6 +30,7 @@
 		A73FEEE91DBEA510008D52D9 /* FavoritedMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FEEE81DBEA510008D52D9 /* FavoritedMovieTableViewCell.swift */; };
 		A76BCB0D1D9F1D0F00569612 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76BCB0C1D9F1D0F00569612 /* MovieDetailViewController.swift */; };
 		A7DDD2731D8A2889001FFB98 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DDD2721D8A2889001FFB98 /* MovieCollectionViewCell.swift */; };
+		A7EA8B001DC14EA1001EE17C /* InternetConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EA8AFF1DC14EA1001EE17C /* InternetConnectivity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +72,10 @@
 		A7122F601D8739040013341E /* MovieCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewController.swift; sourceTree = "<group>"; };
 		A7122F621D8739800013341E /* MovieDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDataStore.swift; sourceTree = "<group>"; };
 		A7122F661D873A3A0013341E /* OMDBAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMDBAPIClient.swift; sourceTree = "<group>"; };
+		A71C4D971DBF169900A41B94 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		A71C4D981DBF169900A41B94 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		A71C4D9A1DBF173600A41B94 /* CinemaClub-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CinemaClub-Bridging-Header.h"; sourceTree = "<group>"; };
+		A71C4D9B1DBF1B8D00A41B94 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		A72860261DBBF41F00EE5086 /* Movie+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A72860271DBBF41F00EE5086 /* Movie+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A72860281DBBF41F00EE5086 /* Favorited+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Favorited+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -77,6 +84,7 @@
 		A73FEEE81DBEA510008D52D9 /* FavoritedMovieTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritedMovieTableViewCell.swift; sourceTree = "<group>"; };
 		A76BCB0C1D9F1D0F00569612 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		A7DDD2721D8A2889001FFB98 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		A7EA8AFF1DC14EA1001EE17C /* InternetConnectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetConnectivity.swift; sourceTree = "<group>"; };
 		B01D76C708BFB8E2452CF09B /* Pods_CinemaClubTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CinemaClubTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7E73849BD8BB8CE6EA0FAA0 /* Pods-CinemaClubUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CinemaClubUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CinemaClubUITests/Pods-CinemaClubUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E02ACBA874332163D30EAAC6 /* Pods-CinemaClubUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CinemaClubUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CinemaClubUITests/Pods-CinemaClubUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -159,11 +167,15 @@
 		A7122F2D1D87278F0013341E /* CinemaClub */ = {
 			isa = PBXGroup;
 			children = (
+				A7FCD9731DBFBB2A00019C5C /* Views */,
+				A7FCD9721DBFBB1500019C5C /* Controller */,
+				A7122F5F1D87383E0013341E /* Model */,
 				A7122F2E1D87278F0013341E /* AppDelegate.swift */,
 				A7122F621D8739800013341E /* MovieDataStore.swift */,
-				A7122F601D8739040013341E /* MovieCollectionViewController.swift */,
 				A7DDD2721D8A2889001FFB98 /* MovieCollectionViewCell.swift */,
 				A76BCB0C1D9F1D0F00569612 /* MovieDetailViewController.swift */,
+				A7122F601D8739040013341E /* MovieCollectionViewController.swift */,
+				A7EA8AFF1DC14EA1001EE17C /* InternetConnectivity.swift */,
 				A73FEEE61DBEA4CF008D52D9 /* FavoritedMovieTableViewController.swift */,
 				A73FEEE81DBEA510008D52D9 /* FavoritedMovieTableViewCell.swift */,
 				A7122F661D873A3A0013341E /* OMDBAPIClient.swift */,
@@ -171,10 +183,13 @@
 				A72860271DBBF41F00EE5086 /* Movie+CoreDataProperties.swift */,
 				A72860281DBBF41F00EE5086 /* Favorited+CoreDataClass.swift */,
 				A72860291DBBF41F00EE5086 /* Favorited+CoreDataProperties.swift */,
+				A71C4D971DBF169900A41B94 /* Reachability.h */,
+				A71C4D981DBF169900A41B94 /* Reachability.m */,
+				A71C4D9A1DBF173600A41B94 /* CinemaClub-Bridging-Header.h */,
+				A71C4D9B1DBF1B8D00A41B94 /* Helper.swift */,
 				A7122F381D87278F0013341E /* Assets.xcassets */,
 				A7122F321D87278F0013341E /* Main.storyboard */,
 				A7122F3A1D87278F0013341E /* LaunchScreen.storyboard */,
-				A7122F5F1D87383E0013341E /* Model */,
 				A7122F3D1D87278F0013341E /* Info.plist */,
 				A7122F351D87278F0013341E /* CinemaClub.xcdatamodeld */,
 			);
@@ -204,6 +219,20 @@
 			children = (
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		A7FCD9721DBFBB1500019C5C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		A7FCD9731DBFBB2A00019C5C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -490,6 +519,7 @@
 			files = (
 				A73FEEE91DBEA510008D52D9 /* FavoritedMovieTableViewCell.swift in Sources */,
 				A73FEEE71DBEA4CF008D52D9 /* FavoritedMovieTableViewController.swift in Sources */,
+				A71C4D9C1DBF1B8D00A41B94 /* Helper.swift in Sources */,
 				A728602A1DBBF41F00EE5086 /* Movie+CoreDataClass.swift in Sources */,
 				A7122F371D87278F0013341E /* CinemaClub.xcdatamodeld in Sources */,
 				A728602D1DBBF41F00EE5086 /* Favorited+CoreDataProperties.swift in Sources */,
@@ -498,7 +528,9 @@
 				A728602B1DBBF41F00EE5086 /* Movie+CoreDataProperties.swift in Sources */,
 				A7122F611D8739040013341E /* MovieCollectionViewController.swift in Sources */,
 				A728602C1DBBF41F00EE5086 /* Favorited+CoreDataClass.swift in Sources */,
+				A71C4D991DBF169900A41B94 /* Reachability.m in Sources */,
 				A7DDD2731D8A2889001FFB98 /* MovieCollectionViewCell.swift in Sources */,
+				A7EA8B001DC14EA1001EE17C /* InternetConnectivity.swift in Sources */,
 				A7122F671D873A3A0013341E /* OMDBAPIClient.swift in Sources */,
 				A76BCB0D1D9F1D0F00569612 /* MovieDetailViewController.swift in Sources */,
 			);
@@ -650,11 +682,14 @@
 			baseConfigurationReference = 425097996FB58F55283EBA39 /* Pods-CinemaClub.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 35H4MHLESW;
 				INFOPLIST_FILE = CinemaClub/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = JEU.CinemaClub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CinemaClub/CinemaClub-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -664,11 +699,13 @@
 			baseConfigurationReference = F4C13D2BD3E977034199B863 /* Pods-CinemaClub.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 35H4MHLESW;
 				INFOPLIST_FILE = CinemaClub/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = JEU.CinemaClub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CinemaClub/CinemaClub-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

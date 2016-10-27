@@ -30,7 +30,8 @@ class MovieDataStore {
             self.movieResults.removeAll()
             self.totalNumberOfSearchResults = (results["totalResults"]?.intValue)
             
-            guard let resultsArray = results["Search"] as? [[String: AnyObject]] else {fatalError("Error returning resultsArray")}
+            guard let resultsArray = results["Search"] as? [[String: AnyObject]] else {return}
+//            fatalError("Error returning resultsArray")
             
             for movieDictionary in resultsArray {
                 

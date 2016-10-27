@@ -18,8 +18,11 @@ class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var movieYear: UILabel!
+    @IBOutlet weak var displayedMovieTitle: UILabel!
     var movie: Movie?
     var delegate: MovieCollectionViewCellDelegate?
+    
+    
     
 //    func createMovie(_ movie: Movie) {
 //        self.movie = movie
@@ -59,6 +62,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
         self.movieImageView.image = nil
         self.movieTitle.text = nil
         self.movieYear.text = nil
+        self.displayedMovieTitle.text = nil
     }
     
 }
