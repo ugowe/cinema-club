@@ -31,35 +31,6 @@ extension MovieCollectionViewController {
         {
             print("Reachable with Wifi")
             reachabilityStatus = kREACHABILITYWITHWIFI
-            self.reachabilityImage.image = UIImage.init(named: "internetcheckMark.png")
-            self.reachabilityImage.isHidden = false
-            self.view.addSubview(self.reachabilityImage)
-            self.view.bringSubview(toFront: self.reachabilityImage)
-            
-            UIView.animate(withDuration: 1.3, animations: {
-                self.reachabilityImage.alpha = 0.0
-                
-            })
-            
-//            let randomIndex = Int(arc4random_uniform(UInt32(randomSearchTerm.count)))
-//            let randomSearch = randomSearchTerm[randomIndex]
-            
-//            self.store.getMovieRepositories(randomSearch) {
-//                OperationQueue.main.addOperation({
-//                    self.movieCollectionView.reloadData()
-//                    self.searchActivityIndictor.isHidden = true
-//                    self.searchActivityIndictor.stopAnimating()
-//                    
-//                })
-//            }
-//            moviesSearchBar.isUserInteractionEnabled = true
-        }
-        else if networkStatus.rawValue == ReachableViaWWAN.rawValue
-        {
-            print("Reachable with WWAN")
-            reachabilityStatus = kREACHABLEWITHWWAN
-            
-//            moviesSearchBar.isUserInteractionEnabled = true
             self.reachabilityImage.image = UIImage.init(named: "Green")
             self.reachabilityImage.isHidden = false
             self.view.addSubview(self.reachabilityImage)
@@ -69,17 +40,45 @@ extension MovieCollectionViewController {
                 self.reachabilityImage.alpha = 0.0
                 
             })
-//            
-//            let randomIndex = Int(arc4random_uniform(UInt32(randomSearchTerm.count)))
-//            let randomSearch = randomSearchTerm[randomIndex]
-//            self.store.getMovieRepositories(randomSearch) {
+            
+            
+            self.store.searchForMoviesWith(Search.randomSearch, completionHandler: { (true) in
 //                OperationQueue.main.addOperation({
-//                    self.movieCollectionView.reloadData()
-//                    self.searchActivityIndictor.isHidden = true
-//                    self.searchActivityIndictor.stopAnimating()
-//                    
+                DispatchQueue.main.async {
+                    self.movieCollectionView.reloadData()
+                    self.searchActivityIndicator.isHidden = true
+                    self.searchActivityIndicator.stopAnimating()
+                }
 //                })
-//            }
+            })
+        
+//            searchBar.isUserInteractionEnabled = true
+        }
+        else if networkStatus.rawValue == ReachableViaWWAN.rawValue
+        {
+            print("Reachable with WWAN")
+            reachabilityStatus = kREACHABLEWITHWWAN
+            
+//            searchBar.isUserInteractionEnabled = true
+            self.reachabilityImage.image = UIImage.init(named: "Green")
+            self.reachabilityImage.isHidden = false
+            self.view.addSubview(self.reachabilityImage)
+            self.view.bringSubview(toFront: self.reachabilityImage)
+            
+            UIView.animate(withDuration: 1.3, animations: {
+                self.reachabilityImage.alpha = 0.0
+                
+            })
+            
+            self.store.searchForMoviesWith(Search.randomSearch, completionHandler: { (true) in
+//                OperationQueue.main.addOperation({
+                DispatchQueue.main.async {
+                    self.movieCollectionView.reloadData()
+                    self.searchActivityIndicator.isHidden = true
+                    self.searchActivityIndicator.stopAnimating()
+                }
+//                })
+            })
         }
         else if networkStatus.rawValue == NotReachable.rawValue
         {
@@ -89,8 +88,8 @@ extension MovieCollectionViewController {
             self.store.movieResults.removeAll()
             DispatchQueue.main.async(execute: {
                 self.movieCollectionView.reloadData()
-//                self.searchActivityIndictor.isHidden = true
-//                self.searchActivityIndictor.stopAnimating()
+                self.searchActivityIndicator.isHidden = true
+                self.searchActivityIndicator.stopAnimating()
 
                 
             })

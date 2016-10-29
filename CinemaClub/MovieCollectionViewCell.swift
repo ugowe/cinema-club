@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-protocol MovieCollectionViewCellDelegate: AnyObject {
-    func canUpdateImageViewOfCell(_ cell: MovieCollectionViewCell) -> Bool
-}
+//protocol MovieCollectionViewCellDelegate: AnyObject {
+//    func canUpdateImageViewOfCell(_ cell: MovieCollectionViewCell) -> Bool
+//}
 
 class MovieCollectionViewCell: UICollectionViewCell {
     
@@ -20,7 +20,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var movieYear: UILabel!
     @IBOutlet weak var displayedMovieTitle: UILabel!
     var movie: Movie?
-    var delegate: MovieCollectionViewCellDelegate?
+//    var delegate: MovieCollectionViewCellDelegate?
     
     
     

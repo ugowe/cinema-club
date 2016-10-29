@@ -29,7 +29,7 @@ class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+        store.fetchData()
         reachabilityStatusChanged()
         
         NotificationCenter.default.addObserver(self, selector: #selector(MovieDetailViewController.reachabilityStatusChanged), name: NSNotification.Name(rawValue: "reachStatusChanged"), object: nil)

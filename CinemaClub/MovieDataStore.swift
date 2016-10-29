@@ -8,13 +8,13 @@
 
 import Foundation
 import CoreData
-import UIKit
 
 
 //@available(iOS 10.0, *)
 class MovieDataStore {
     
     static let sharedStore = MovieDataStore()
+    let API = OMDBAPIClient.sharedInstance
     var movieResults: [Movie] = []
     var favoriteMovies: [Favorited] = []
     var totalNumberOfSearchResults: Int?
@@ -25,10 +25,10 @@ class MovieDataStore {
     
     func searchForMoviesWith(_ query: String, completionHandler: @escaping (Bool) -> ()) {
         
-        OMDBAPIClient.searchOMDBAPIWith(query) { results in
+        API.searchOMDBAPIWith(query) { results in
             
-            self.movieResults.removeAll()
-            self.totalNumberOfSearchResults = (results["totalResults"]?.intValue)
+//            self.movieResults.removeAll()
+//            self.totalNumberOfSearchResults = (results["totalResults"]?.intValue)
             
             guard let resultsArray = results["Search"] as? [[String: AnyObject]] else {return}
 //            fatalError("Error returning resultsArray")
@@ -44,15 +44,11 @@ class MovieDataStore {
                 //                }
                 
                 let movie = Movie.init(dictionary: movieDictionary, entity: entity, insertInto: self.managedObjectContext)
-                //                movie.movieTitle = movieDictionary["Title"] as? String
-                //                movie.movieYear = (movieDictionary["Year"] as? String)!
-                //                movie.movieID = (movieDictionary["imdbID"] as? String)!
-                //                movie.moviePosterURL = (movieDictionary["Poster"] as? String)!
-                movie.movieTitle = movieDictionary["Title"] as? String
-                movie.movieYear = movieDictionary["Year"] as? String
-                movie.movieID = movieDictionary["imdbID"] as? String
-                movie.moviePosterURL = movieDictionary["Poster"] as? String
-                
+//                movie.movieTitle = movieDictionary["Title"] as? String
+//                movie.movieYear = movieDictionary["Year"] as? String
+//                movie.movieID = movieDictionary["imdbID"] as? String
+//                movie.moviePosterURL = movieDictionary["Poster"] as? String
+//                
                 self.movieResults.append(movie)
                 
                 completionHandler(true)
@@ -65,7 +61,7 @@ class MovieDataStore {
     }
     
     func getMovieDetailsWithID(movie: Movie, completion:@escaping ()->()){
-        OMDBAPIClient().getMovieDataSearchWithID(movieID: movie.movieID!){ movieData in
+        API.getMovieDataSearchWithID(movieID: movie.movieID!){ movieData in
             movie.updateMovieObjectWithDetails(movieData, completion: { success in
                 if success {
                     completion()

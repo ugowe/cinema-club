@@ -21,7 +21,7 @@
 		A7122F631D8739800013341E /* MovieDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7122F621D8739800013341E /* MovieDataStore.swift */; };
 		A7122F671D873A3A0013341E /* OMDBAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7122F661D873A3A0013341E /* OMDBAPIClient.swift */; };
 		A71C4D991DBF169900A41B94 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A71C4D981DBF169900A41B94 /* Reachability.m */; };
-		A71C4D9C1DBF1B8D00A41B94 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71C4D9B1DBF1B8D00A41B94 /* Helper.swift */; };
+		A71C4D9C1DBF1B8D00A41B94 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71C4D9B1DBF1B8D00A41B94 /* Helpers.swift */; };
 		A728602A1DBBF41F00EE5086 /* Movie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72860261DBBF41F00EE5086 /* Movie+CoreDataClass.swift */; };
 		A728602B1DBBF41F00EE5086 /* Movie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72860271DBBF41F00EE5086 /* Movie+CoreDataProperties.swift */; };
 		A728602C1DBBF41F00EE5086 /* Favorited+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72860281DBBF41F00EE5086 /* Favorited+CoreDataClass.swift */; };
@@ -75,7 +75,7 @@
 		A71C4D971DBF169900A41B94 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		A71C4D981DBF169900A41B94 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		A71C4D9A1DBF173600A41B94 /* CinemaClub-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CinemaClub-Bridging-Header.h"; sourceTree = "<group>"; };
-		A71C4D9B1DBF1B8D00A41B94 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		A71C4D9B1DBF1B8D00A41B94 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		A72860261DBBF41F00EE5086 /* Movie+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A72860271DBBF41F00EE5086 /* Movie+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A72860281DBBF41F00EE5086 /* Favorited+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Favorited+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -172,13 +172,13 @@
 				A7122F5F1D87383E0013341E /* Model */,
 				A7122F2E1D87278F0013341E /* AppDelegate.swift */,
 				A7122F621D8739800013341E /* MovieDataStore.swift */,
+				A7122F661D873A3A0013341E /* OMDBAPIClient.swift */,
 				A7DDD2721D8A2889001FFB98 /* MovieCollectionViewCell.swift */,
 				A76BCB0C1D9F1D0F00569612 /* MovieDetailViewController.swift */,
 				A7122F601D8739040013341E /* MovieCollectionViewController.swift */,
 				A7EA8AFF1DC14EA1001EE17C /* InternetConnectivity.swift */,
 				A73FEEE61DBEA4CF008D52D9 /* FavoritedMovieTableViewController.swift */,
 				A73FEEE81DBEA510008D52D9 /* FavoritedMovieTableViewCell.swift */,
-				A7122F661D873A3A0013341E /* OMDBAPIClient.swift */,
 				A72860261DBBF41F00EE5086 /* Movie+CoreDataClass.swift */,
 				A72860271DBBF41F00EE5086 /* Movie+CoreDataProperties.swift */,
 				A72860281DBBF41F00EE5086 /* Favorited+CoreDataClass.swift */,
@@ -186,7 +186,7 @@
 				A71C4D971DBF169900A41B94 /* Reachability.h */,
 				A71C4D981DBF169900A41B94 /* Reachability.m */,
 				A71C4D9A1DBF173600A41B94 /* CinemaClub-Bridging-Header.h */,
-				A71C4D9B1DBF1B8D00A41B94 /* Helper.swift */,
+				A71C4D9B1DBF1B8D00A41B94 /* Helpers.swift */,
 				A7122F381D87278F0013341E /* Assets.xcassets */,
 				A7122F321D87278F0013341E /* Main.storyboard */,
 				A7122F3A1D87278F0013341E /* LaunchScreen.storyboard */,
@@ -519,7 +519,7 @@
 			files = (
 				A73FEEE91DBEA510008D52D9 /* FavoritedMovieTableViewCell.swift in Sources */,
 				A73FEEE71DBEA4CF008D52D9 /* FavoritedMovieTableViewController.swift in Sources */,
-				A71C4D9C1DBF1B8D00A41B94 /* Helper.swift in Sources */,
+				A71C4D9C1DBF1B8D00A41B94 /* Helpers.swift in Sources */,
 				A728602A1DBBF41F00EE5086 /* Movie+CoreDataClass.swift in Sources */,
 				A7122F371D87278F0013341E /* CinemaClub.xcdatamodeld in Sources */,
 				A728602D1DBBF41F00EE5086 /* Favorited+CoreDataProperties.swift in Sources */,
