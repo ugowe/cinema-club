@@ -16,10 +16,10 @@ class FavoritedMovieTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
@@ -36,24 +36,24 @@ class FavoritedMovieTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-//
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return
-//    }
-
+    //
+    //    override func numberOfSections(in tableView: UITableView) -> Int {
+    //        // #warning Incomplete implementation, return the number of sections
+    //        return
+    //    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return store.favoriteMovies.count
     }
-
+    
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -68,23 +68,23 @@ class FavoritedMovieTableViewController: UITableViewController {
         
         let imageString = favoriteMovie?.first?.moviePosterURL
         
-        guard let unwrappedString =  imageString else {fatalError("")}
-        if unwrappedString == "N/A" {
-            cell.favMoviePosterImageView.image = UIImage.init(named: "moviePlaceholder")
+        if let unwrappedString =  imageString {
+            if unwrappedString == "N/A" {
+                cell.favMoviePosterImageView.image = UIImage.init(named: "moviePlaceholder")
+            }
+            
+            let posterImageURL = URL(string: unwrappedString)
+            guard let url = posterImageURL else {fatalError("")}
+            let imageFromData = try? Data(contentsOf: url)
+            
+            if let unwrappedImage = imageFromData {
+                cell.favMoviePosterImageView.image = UIImage.init(data: unwrappedImage)
+            }
         }
-        
-        let posterImageURL = URL(string: unwrappedString)
-        guard let url = posterImageURL else {fatalError("")}
-        let imageFromData = try? Data(contentsOf: url)
-        
-        if let unwrappedImage = imageFromData {
-            cell.favMoviePosterImageView.image = UIImage.init(data: unwrappedImage)
-        }
-        
         return cell
     }
- 
-
+    
+    
     
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -92,7 +92,7 @@ class FavoritedMovieTableViewController: UITableViewController {
         return true
     }
     
-
+    
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -109,7 +109,7 @@ class FavoritedMovieTableViewController: UITableViewController {
     }
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "favoritesToDetailSegue" {
@@ -128,5 +128,5 @@ class FavoritedMovieTableViewController: UITableViewController {
         
     }
     
-
+    
 }

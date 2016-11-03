@@ -167,26 +167,11 @@
 		A7122F2D1D87278F0013341E /* CinemaClub */ = {
 			isa = PBXGroup;
 			children = (
-				A7FCD9731DBFBB2A00019C5C /* Views */,
-				A7FCD9721DBFBB1500019C5C /* Controller */,
-				A7122F5F1D87383E0013341E /* Model */,
 				A7122F2E1D87278F0013341E /* AppDelegate.swift */,
-				A7122F621D8739800013341E /* MovieDataStore.swift */,
-				A7122F661D873A3A0013341E /* OMDBAPIClient.swift */,
-				A7DDD2721D8A2889001FFB98 /* MovieCollectionViewCell.swift */,
-				A76BCB0C1D9F1D0F00569612 /* MovieDetailViewController.swift */,
-				A7122F601D8739040013341E /* MovieCollectionViewController.swift */,
-				A7EA8AFF1DC14EA1001EE17C /* InternetConnectivity.swift */,
-				A73FEEE61DBEA4CF008D52D9 /* FavoritedMovieTableViewController.swift */,
-				A73FEEE81DBEA510008D52D9 /* FavoritedMovieTableViewCell.swift */,
-				A72860261DBBF41F00EE5086 /* Movie+CoreDataClass.swift */,
-				A72860271DBBF41F00EE5086 /* Movie+CoreDataProperties.swift */,
-				A72860281DBBF41F00EE5086 /* Favorited+CoreDataClass.swift */,
-				A72860291DBBF41F00EE5086 /* Favorited+CoreDataProperties.swift */,
-				A71C4D971DBF169900A41B94 /* Reachability.h */,
-				A71C4D981DBF169900A41B94 /* Reachability.m */,
-				A71C4D9A1DBF173600A41B94 /* CinemaClub-Bridging-Header.h */,
-				A71C4D9B1DBF1B8D00A41B94 /* Helpers.swift */,
+				A7122F5F1D87383E0013341E /* Model */,
+				A7FCD9731DBFBB2A00019C5C /* Views */,
+				A7FCD9721DBFBB1500019C5C /* Controllers */,
+				A74C16FD1DC9006700D1083E /* Utilities */,
 				A7122F381D87278F0013341E /* Assets.xcassets */,
 				A7122F321D87278F0013341E /* Main.storyboard */,
 				A7122F3A1D87278F0013341E /* LaunchScreen.storyboard */,
@@ -217,20 +202,43 @@
 		A7122F5F1D87383E0013341E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A72860261DBBF41F00EE5086 /* Movie+CoreDataClass.swift */,
+				A72860271DBBF41F00EE5086 /* Movie+CoreDataProperties.swift */,
+				A72860281DBBF41F00EE5086 /* Favorited+CoreDataClass.swift */,
+				A72860291DBBF41F00EE5086 /* Favorited+CoreDataProperties.swift */,
+				A7122F621D8739800013341E /* MovieDataStore.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
 		};
-		A7FCD9721DBFBB1500019C5C /* Controller */ = {
+		A74C16FD1DC9006700D1083E /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				A7122F661D873A3A0013341E /* OMDBAPIClient.swift */,
+				A71C4D9B1DBF1B8D00A41B94 /* Helpers.swift */,
+				A7EA8AFF1DC14EA1001EE17C /* InternetConnectivity.swift */,
+				A71C4D971DBF169900A41B94 /* Reachability.h */,
+				A71C4D981DBF169900A41B94 /* Reachability.m */,
+				A71C4D9A1DBF173600A41B94 /* CinemaClub-Bridging-Header.h */,
 			);
-			name = Controller;
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		A7FCD9721DBFBB1500019C5C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A76BCB0C1D9F1D0F00569612 /* MovieDetailViewController.swift */,
+				A73FEEE61DBEA4CF008D52D9 /* FavoritedMovieTableViewController.swift */,
+				A7122F601D8739040013341E /* MovieCollectionViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		A7FCD9731DBFBB2A00019C5C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A7DDD2721D8A2889001FFB98 /* MovieCollectionViewCell.swift */,
+				A73FEEE81DBEA510008D52D9 /* FavoritedMovieTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";

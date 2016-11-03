@@ -195,7 +195,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="102"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Rn-Bb-JIc" id="Q9b-wz-ELq">
-                                    <frame key="frameInset" width="375" height="102"/>
+                                    <frame key="frameInset" width="375" height="101.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fRh-xP-X1R">
@@ -356,6 +356,10 @@
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Yt5-m0-Dk5">
+                                        <frame key="frameInset" minX="161" minY="109.5" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -408,6 +412,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="Yt5-m0-Dk5" id="4PR-5u-VpC"/>
+                        <outlet property="actorsLabel" destination="JiI-du-BF7" id="lM3-gI-PYR"/>
+                        <outlet property="directorLabel" destination="q83-sT-cKv" id="mcI-qW-xzW"/>
+                        <outlet property="genreLabel" destination="29d-LD-lub" id="XC3-Mr-J7c"/>
                         <outlet property="movieActorsLabel" destination="qSf-hd-3Zg" id="Z98-48-I68"/>
                         <outlet property="movieDirectorLabel" destination="Aaf-Ih-rQk" id="XZd-XI-8pI"/>
                         <outlet property="movieGenreLabel" destination="ytc-BB-EEm" id="TxM-Pe-njn"/>
@@ -416,6 +424,7 @@
                         <outlet property="movieRatedLabel" destination="SlQ-hY-z4i" id="cMJ-cs-nhG"/>
                         <outlet property="movieTitleLabel" destination="bs8-rz-S6R" id="dGt-SO-T30"/>
                         <outlet property="movieYearLabel" destination="ZDK-tX-8Lr" id="Kwo-i1-kbx"/>
+                        <outlet property="ratedLabel" destination="krg-o1-3q9" id="I9W-nk-f03"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7zn-q0-FIB" userLabel="First Responder" sceneMemberID="firstResponder"/>

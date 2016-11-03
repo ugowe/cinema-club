@@ -134,9 +134,13 @@ class MovieCollectionViewController: UIViewController, UICollectionViewDelegate,
         else if !searchText.isEmpty {
             self.store.movieResults.removeAll()
             self.store.API.pageNumber = 1
-            self.store.searchForMoviesWith(searchText, completionHandler: { (true) in
-                DispatchQueue.main.async {
-                    self.movieCollectionView.reloadData()
+            self.store.searchForMoviesWith(searchText, completionHandler: { success in
+                if success {
+                    
+                    DispatchQueue.main.async {
+                        self.movieCollectionView.reloadData()
+                    }
+                    
                 }
             })
         }
@@ -218,7 +222,7 @@ class MovieCollectionViewController: UIViewController, UICollectionViewDelegate,
         self.performSegue(withIdentifier: "movieToDetailSegue", sender: indexPath)
         
         let cell = movieCollectionView.cellForItem(at: indexPath)
-        cell?.backgroundColor = UIColor.cyan
+        cell?.backgroundColor = UIColor.white
         
     }
     
@@ -291,10 +295,6 @@ class MovieCollectionViewController: UIViewController, UICollectionViewDelegate,
     }
     
     func setUpIntialView() {
-        
-        
-        // Set the footer view to be unhidden
-        self.hideFooterView = true
         
         
         // Collection view Layout

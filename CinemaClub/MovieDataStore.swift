@@ -25,6 +25,7 @@ class MovieDataStore {
     
     func searchForMoviesWith(_ query: String, completionHandler: @escaping (Bool) -> ()) {
         
+        API.searchOMDBAPIWith(<#T##query: String##String#>, completionHandler: <#T##([String : AnyObject]) -> ()#>)
         API.searchOMDBAPIWith(query) { results in
             
 //            self.movieResults.removeAll()
@@ -39,9 +40,7 @@ class MovieDataStore {
                 
                 guard let entity = movieEntity else {fatalError("There is an error with the entity")}
                 
-                //                if let movie = Movie(dictionary: dictionary as! [String : Any]) {
-                //                   self.movieResults.append(movie)
-                //                }
+
                 
                 let movie = Movie.init(dictionary: movieDictionary, entity: entity, insertInto: self.managedObjectContext)
 //                movie.movieTitle = movieDictionary["Title"] as? String
@@ -51,8 +50,12 @@ class MovieDataStore {
 //                
                 self.movieResults.append(movie)
                 
-                completionHandler(true)
+                
             }
+            
+            completionHandler(true)
+            
+            
         }
         
         if self.movieResults.count > 0{
