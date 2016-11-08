@@ -16,7 +16,7 @@ class MovieDataStore {
     static let sharedStore = MovieDataStore()
     let API = OMDBAPIClient.sharedInstance
     var movieResults: [Movie] = []
-    var favoriteMovies: [Favorited] = []
+    var favoriteMovies: [FavoritedMovie] = []
     var totalNumberOfSearchResults: Int?
     
     // This private init is what allows us to ensure that people aren't creating multiple instances of the singleton
@@ -25,7 +25,6 @@ class MovieDataStore {
     
     func searchForMoviesWith(_ query: String, completionHandler: @escaping (Bool) -> ()) {
         
-        API.searchOMDBAPIWith(<#T##query: String##String#>, completionHandler: <#T##([String : AnyObject]) -> ()#>)
         API.searchOMDBAPIWith(query) { results in
             
 //            self.movieResults.removeAll()
@@ -36,13 +35,13 @@ class MovieDataStore {
             
             for movieDictionary in resultsArray {
                 
-                let movieEntity = NSEntityDescription.entity(forEntityName: "Movie", in: self.managedObjectContext)
-                
-                guard let entity = movieEntity else {fatalError("There is an error with the entity")}
+//                let movieEntity = NSEntityDescription.entity(forEntityName: "Movie", in: self.managedObjectContext)
+//                
+//                guard let entity = movieEntity else {fatalError("There is an error with the entity")}
                 
 
-                
-                let movie = Movie.init(dictionary: movieDictionary, entity: entity, insertInto: self.managedObjectContext)
+                let movie = Movie.init(dictionary: movieDictionary)
+//                let movie = Movie.init(dictionary: movieDictionary, entity: entity, insertInto: self.managedObjectContext)
 //                movie.movieTitle = movieDictionary["Title"] as? String
 //                movie.movieYear = movieDictionary["Year"] as? String
 //                movie.movieID = movieDictionary["imdbID"] as? String
@@ -75,7 +74,7 @@ class MovieDataStore {
     }
     
     func fetchData() {
-        let favoriteMovieRequest = NSFetchRequest<Favorited>(entityName: "Favorited")
+        let favoriteMovieRequest = NSFetchRequest<FavoritedMovie>(entityName: "FavoritedMovie")
         
         do {
             self.favoriteMovies = try managedObjectContext.fetch(favoriteMovieRequest)

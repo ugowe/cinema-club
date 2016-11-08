@@ -16,6 +16,8 @@ class MovieDetailViewController: UIViewController {
     let store = MovieDataStore.sharedStore
     var movie: Movie?
     
+    
+    
     @IBOutlet weak var moviePosterImageView: UIImageView!
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var movieYearLabel: UILabel!
@@ -84,18 +86,18 @@ class MovieDetailViewController: UIViewController {
                 
                 guard let url = posterImageURL else {print("Unable to unwrap imageString"); return}
                 do {
-                let imageData = try Data(contentsOf: url)
-                self.moviePosterImageView.image = UIImage.init(data: imageData)
+                    let imageData = try Data(contentsOf: url)
+                    self.moviePosterImageView.image = UIImage.init(data: imageData)
                     
                 } catch {
                     print(error)
                 }
-            
-
-
+                
+                
+                
             }
         }
-
+        
     }
     
     func saveMovie() {
@@ -112,14 +114,18 @@ class MovieDetailViewController: UIViewController {
             })
         }
         
-        let managedContext = store.managedObjectContext
+        //        guard let repoDictionary = self.movie as! [String: Any] else { fatalError("Object in array is of non-dictionary type") }
         
-        let addMovie = NSEntityDescription.insertNewObject(forEntityName: "Favorited", into: managedContext) as! Favorited
         
-        guard let savedMovie = self.movie else {return}
-        addMovie.movies?.insert(savedMovie)
+        let favoritedMovieEntity = NSEntityDescription.entity(forEntityName: "FavoritedMovie", in: store.managedObjectContext)
+        guard let entity = favoritedMovieEntity else {fatalError("Entity not working")}
         
-        store.saveContext()        
+        let savedMovie = FavoritedMovie(movie: self.movie!, entity: entity, managedObjectContext: store.managedObjectContext)
+        
+        store.favoriteMovies.append(savedMovie)
+        
+        
+        store.saveContext()
     }
     
     func reachabilityStatusChanged(){
@@ -148,7 +154,7 @@ class MovieDetailViewController: UIViewController {
     
     func checkData() {
         
-        let favoriteRequest = NSFetchRequest<Favorited>(entityName: "Favorited")
+        let favoriteRequest = NSFetchRequest<FavoritedMovie>(entityName: "FavoritedMovie")
         
         do{
             let object = try MovieDataStore.sharedStore.managedObjectContext.fetch(favoriteRequest)
@@ -184,7 +190,7 @@ class MovieDetailViewController: UIViewController {
                 })
             }
             for movie in object {
-                guard let favoritedMovieID = movie.movies?.first?.movieID else {return}
+                guard let favoritedMovieID = movie.movieID else {return}
                 
                 if object.count != 0 && favoritedMovieID == movieObject.movieID {
                     print("WE ALREADY HHHHHHHHHHHHHEEEEEEEEEEEEEHHHHHHEEEEE")
@@ -245,8 +251,8 @@ class MovieDetailViewController: UIViewController {
             
         } catch {print("Error retrieving data")}
     }
-
-
+    
+    
 }
 
 

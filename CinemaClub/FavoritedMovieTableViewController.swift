@@ -59,14 +59,14 @@ class FavoritedMovieTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as! FavoritedMovieTableViewCell
         
-        let favoriteMovie = store.favoriteMovies[(indexPath as NSIndexPath).row].movies
+        let favoriteMovie = store.favoriteMovies[(indexPath as NSIndexPath).row]
         
-        cell.favMovieTitleLabel.text = favoriteMovie?.first?.movieTitle
-        cell.favDirectorLabel.text = favoriteMovie?.first?.movieDirector
-        cell.favActorsLabel.text = favoriteMovie?.first?.movieActors
-        cell.favYearLabel.text = favoriteMovie?.first?.movieYear
+        cell.favMovieTitleLabel.text = favoriteMovie.movieTitle
+        cell.favDirectorLabel.text = favoriteMovie.movieDirector
+        cell.favActorsLabel.text = favoriteMovie.movieActors
+        cell.favYearLabel.text = favoriteMovie.movieYear
         
-        let imageString = favoriteMovie?.first?.moviePosterURL
+        let imageString = favoriteMovie.moviePosterURL
         
         if let unwrappedString =  imageString {
             if unwrappedString == "N/A" {
@@ -118,11 +118,11 @@ class FavoritedMovieTableViewController: UITableViewController {
             let indexPath = tableView.indexPath(for: sender as! UITableViewCell)
             
             if let unwrappedIndexPath = indexPath {
-                let movieID = self.store.favoriteMovies[(unwrappedIndexPath as NSIndexPath).row].movies
-                guard let movieTitle = movieID?.first else {return}
+                let favoriteMovie  = self.store.favoriteMovies[(unwrappedIndexPath as NSIndexPath).row].movie
+                guard let movie = favoriteMovie else {return}
                 
                 guard let destinationVC = destinationVC else {return}
-                destinationVC.movie = movieTitle
+                destinationVC.movie = movie
             }
         }
         

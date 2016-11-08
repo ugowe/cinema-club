@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="16A323" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Favorited" representedClassName=".Favorited" syncable="YES">
-        <relationship name="movies" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Movie" inverseName="favorite" inverseEntity="Movie" syncable="YES"/>
-    </entity>
-    <entity name="Movie" representedClassName=".Movie" syncable="YES">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11542" systemVersion="16B2555" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="FavoritedMovie" representedClassName=".FavoritedMovie" syncable="YES">
         <attribute name="movieActors" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="movieCountry" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="movieDirector" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="movieGenre" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="movieID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="movieLanguage" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="movieMetascore" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="movieMetaScore" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="moviePlotLong" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="moviePlotShort" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="moviePosterURL" optional="YES" attributeType="String" syncable="YES"/>
@@ -20,10 +17,8 @@
         <attribute name="movieTitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="movieWriter" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="movieYear" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="favorite" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Favorited" inverseName="movies" inverseEntity="Favorited" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Favorited" positionX="142" positionY="12" width="128" height="58"/>
-        <element name="Movie" positionX="-54" positionY="-9" width="128" height="300"/>
+        <element name="FavoritedMovie" positionX="-45" positionY="0" width="128" height="285"/>
     </elements>
 </model>
