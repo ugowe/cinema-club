@@ -24,11 +24,14 @@ public class FavoritedMovie: NSManagedObject {
 //            
 //            else {print("Something is wrong in the Movie Class"); return}
         
-        self.movie = movie
+
         self.movieTitle = movie.movieTitle
         self.movieYear = movie.movieYear
-        self.movieID = movie.movieID
+//        self.movieID = movie.movieID
         self.moviePosterURL = movie.moviePosterURL
+        self.movieActors = movie.movieActors
+        self.movieDirector = movie.movieDirector
+        self.movieGenre = movie.movieGenre
         
     }
     

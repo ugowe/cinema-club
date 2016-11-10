@@ -73,7 +73,6 @@ public class Movie: NSObject {
         self.movieYear = dictionary["Year"] as! String?
         self.movieID = dictionary["imdbID"] as! String?
         self.moviePosterURL = dictionary["Poster"] as! String?
-
     }
     
     

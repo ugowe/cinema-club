@@ -49,6 +49,22 @@ class FavoritedMovieTableViewController: UITableViewController {
     //        return
     //    }
     
+    func favoritedToMovie(favoritedMovie: FavoritedMovie) -> Movie {
+        let favoritedMovieID = FavoritedMovie().movieID
+        var movie: Movie?
+        
+        OMDBAPIClient.sharedInstance.getMovieDataSearchWithID(movieID: favoritedMovieID!) {movieData in
+            movie = Movie.init(dictionary: movieData)
+        }
+        
+//        self.store.getMovieDetailsWithID(movie: movie!) { success in
+//            
+//            
+//        }
+//        
+        return movie!
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return store.favoriteMovies.count
@@ -92,7 +108,12 @@ class FavoritedMovieTableViewController: UITableViewController {
         return true
     }
     
-    
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        self.performSegue(withIdentifier: "favoritesToDetailSegue", sender: indexPath)
+//        
+//        let cell = tableView.cellForRow(at: indexPath)
+//        cell?.backgroundColor = UIColor.white
+//    }
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -112,21 +133,50 @@ class FavoritedMovieTableViewController: UITableViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "favoritesToDetailSegue" {
-            let destinationVC = segue.destination as? MovieDetailViewController
-            
-            let indexPath = tableView.indexPath(for: sender as! UITableViewCell)
-            
-            if let unwrappedIndexPath = indexPath {
-                let favoriteMovie  = self.store.favoriteMovies[(unwrappedIndexPath as NSIndexPath).row].movie
-                guard let movie = favoriteMovie else {return}
-                
-                guard let destinationVC = destinationVC else {return}
-                destinationVC.movie = movie
-            }
-        }
+                if segue.identifier == "favoritesToDetailSegue" {
+                    let destinationVC = segue.destination as? MovieDetailViewController
+        
+                    let indexPath = tableView.indexPath(for: sender as! UITableViewCell)
+        
+                    if let unwrappedIndexPath = indexPath {
+                        let favoriteMovie  = self.store.favoriteMovies[(unwrappedIndexPath as NSIndexPath).row]
+                        let newMovie = self.favoritedToMovie(favoritedMovie: favoriteMovie)
+                        //                guard let movie = newMovie else {return}
+        
+                        guard let destinationVC = destinationVC else {return}
+                        destinationVC.movie = newMovie
+                    }
+                }
         
     }
     
     
+//    if segue.identifier == "favoritesToDetailSegue" {
+//    if let selectedIndexPath = tableView.indexPath(for: sender as! UITableViewCell) {
+//    let destinationVC = segue.destination as! MovieDetailViewController
+//    let movie = self.store.favoriteMovies[(selectedIndexPath).row]
+//    let newMovie = self.favoritedToMovie(favoritedMovie: movie)
+//    destinationVC.movie = newMovie
+//    }
+//    }
+
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "favoritesToDetailSegue" {
+//            let destinationVC = segue.destination as? MovieDetailViewController
+//            
+//            let indexPath = tableView.indexPath(for: sender as! UITableViewCell)
+//            
+//            if let unwrappedIndexPath = indexPath {
+//                let favoriteMovie  = self.store.favoriteMovies[(unwrappedIndexPath as NSIndexPath).row]
+//                let newMovie = self.favoritedToMovie(favoritedMovie: favoriteMovie)
+//                //                guard let movie = newMovie else {return}
+//                
+//                guard let destinationVC = destinationVC else {return}
+//                destinationVC.movie = newMovie
+//            }
+//        }
+//        
+//    }
+//    
 }

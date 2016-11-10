@@ -32,6 +32,5 @@ extension FavoritedMovie {
     @NSManaged public var movieWriter: String?
     @NSManaged public var movieYear: String?
     @NSManaged public var movieLanguage: String?
-    @NSManaged public var movie: Movie?
 
 }

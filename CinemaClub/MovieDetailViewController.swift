@@ -115,17 +115,23 @@ class MovieDetailViewController: UIViewController {
         }
         
         //        guard let repoDictionary = self.movie as! [String: Any] else { fatalError("Object in array is of non-dictionary type") }
+        guard let unwrappedMovie = movie else{return}
+        self.store.getMovieDetailsWithID(movie: unwrappedMovie) { success in
+            
+            let favoritedMovieEntity = NSEntityDescription.entity(forEntityName: "FavoritedMovie", in: self.store.managedObjectContext)
+            guard let entity = favoritedMovieEntity else {fatalError("Entity not working")}
+            
+            let savedMovie = FavoritedMovie(movie: unwrappedMovie, entity: entity, managedObjectContext: self.store.managedObjectContext)
+            
+            self.store.favoriteMovies.append(savedMovie)
+            
+            
+            self.store.saveContext()
+       
+        }
         
+
         
-        let favoritedMovieEntity = NSEntityDescription.entity(forEntityName: "FavoritedMovie", in: store.managedObjectContext)
-        guard let entity = favoritedMovieEntity else {fatalError("Entity not working")}
-        
-        let savedMovie = FavoritedMovie(movie: self.movie!, entity: entity, managedObjectContext: store.managedObjectContext)
-        
-        store.favoriteMovies.append(savedMovie)
-        
-        
-        store.saveContext()
     }
     
     func reachabilityStatusChanged(){
@@ -209,7 +215,9 @@ class MovieDetailViewController: UIViewController {
                     self.ratedLabel.isHidden = false
                     
                     self.movieTitleLabel.text = self.movie?.movieTitle
-                    self.movieYearLabel.text = "\((self.movie?.movieYear)!)   |   \((self.movie?.movieRuntime)!)"
+                    guard let movieYear = self.movie?.movieYear,
+                        let movieRuntime = self.movie?.movieRuntime else {return}
+                    self.movieYearLabel.text = "\(movieYear)   |   \(movieRuntime)"
                     self.moviePlotTextView.text = self.movie?.moviePlotShort
                     self.movieDirectorLabel.text = self.movie?.movieDirector
                     self.movieActorsLabel.text = self.movie?.movieActors
